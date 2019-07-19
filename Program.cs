@@ -65,6 +65,30 @@ class Program
             TakePastryOrder();
         }
     }
+
+    private static void ProcessOrder()
+    {
+        breadOrder.Quantity = intNumBread;
+        pastryOrder.Quantity = intNumPastry;
+
+        breadOrder.GetCost();
+        pastryOrder.GetCost();
+
+        DisplayTotal();
+    }
+
+    private static void DisplayTotal()
+    {
+        int totalCost = breadOrder.Cost + pastryOrder.Cost;
+
+        Console.WriteLine("\n------- YOUR ORDER -------");
+        Console.WriteLine($" {intNumBread}x Wheat Bread");
+        Console.WriteLine($"                    ${breadOrder.Cost}.00");
+        Console.WriteLine($" {intNumPastry}x Pastries");
+        Console.WriteLine($"                    ${pastryOrder.Cost}.00");
+        Console.WriteLine("--------------------------");
+        Console.WriteLine($"             TOTAL: ${totalCost}.00\n");
+    }
     
     private static void Main()
     {
@@ -76,16 +100,7 @@ class Program
         {
             TakeBreadOrder();
             TakePastryOrder();
-            
-            breadOrder.Quantity = intNumBread;
-            pastryOrder.Quantity = intNumPastry;
-
-            breadOrder.GetCost();
-            pastryOrder.GetCost();
-
-            int totalCost = breadOrder.Cost + pastryOrder.Cost;
-
-            Console.WriteLine($"\nYour total is ${totalCost}.");
+            ProcessOrder();
         }
         else
         {
