@@ -71,6 +71,9 @@ class Program
         breadOrder.Quantity += intNumBread;
         pastryOrder.Quantity += intNumPastry;
 
+        intNumBread = 0;
+        intNumPastry = 0;
+
         breadOrder.GetCost();
         pastryOrder.GetCost();
 
