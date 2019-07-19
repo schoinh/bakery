@@ -7,6 +7,7 @@ class Program
     private static Pastry pastryOrder = new Pastry ();
     private static int intNumBread;
     private static int intNumPastry;
+    private static bool goodInput;
 
     private static string userResponse = "";
 
@@ -30,20 +31,48 @@ class Program
         Console.WriteLine("---------------------\n");
     }
 
-    private static void TakeBreadOrder()
+    private static void ValidateConvertInput(ref int outputNum)
     {
-        Console.Write("\nHow many loaves of bread would you like?: "); 
-        string numBread = Console.ReadLine();
+        userResponse = Console.ReadLine();
+        // Console.WriteLine("User Response: " + userResponse);
+        bool isInt = int.TryParse(userResponse, out outputNum);
+        // Console.WriteLine("outputNum: " + outputNum);
 
-        // Validate user input and convert input to integer
-        bool isInt = int.TryParse(numBread, out intNumBread);
-        if (!isInt)
+        if (isInt)
+        {
+            goodInput = true; 
+        }
+        else
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Please enter a valid number.");
             Console.ResetColor();
+            goodInput = false;
+        }
+    }
+
+    private static void TakeBreadOrder()
+    {
+        Console.Write("\nHow many loaves of bread would you like?: "); 
+        ValidateConvertInput(ref intNumBread);
+        Console.WriteLine("intNumBread: " + intNumBread);
+
+        if (goodInput == false)
+        {
             TakeBreadOrder();
         }
+
+        // string numBread = Console.ReadLine();
+
+        // // Validate user input and convert input to integer
+        // bool isInt = int.TryParse(numBread, out intNumBread);
+        // if (!isInt)
+        // {
+        //     Console.ForegroundColor = ConsoleColor.Red;
+        //     Console.WriteLine("Please enter a valid number.");
+        //     Console.ResetColor();
+        //     TakeBreadOrder();
+        // }
     }
 
     private static void TakePastryOrder()
