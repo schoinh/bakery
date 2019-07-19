@@ -3,14 +3,21 @@ using Bakery.Models;
 
 class Program
 {
+    private static Bread breadOrder = new Bread ();
+    private static Pastry pastryOrder = new Pastry ();
+    private static int intNumBread;
+    private static int intNumPastry;
+
     private static string userResponse = "";
 
     private static void ShowWelcome()
     {
         Console.Clear();
-        Console.WriteLine("#~#~#~#~#~#~#~#~#~#~#~#");
-        Console.WriteLine("#  BAGHEERA'S BAKERY  #");
-        Console.WriteLine("#~#~#~#~#~#~#~#~#~#~#~#");
+        Console.WriteLine("#~#~#~#~#~#~#~#~#~#~#~#~#~#");
+        Console.WriteLine("#                         #");
+        Console.WriteLine("#    BAGHEERA'S BAKERY    #");
+        Console.WriteLine("#                         #");
+        Console.WriteLine("#~#~#~#~#~#~#~#~#~#~#~#~#~#");
         Console.WriteLine("\n~ Bienvenu a la Boulangerie ~\n");
 
         Console.WriteLine("------- MENU --------");
@@ -30,7 +37,7 @@ class Program
         string numBread = Console.ReadLine();
 
         // Validate user input and convert input to integer
-        int intNumBread;
+        // int intNumBread;
         bool isInt = int.TryParse(numBread, out intNumBread);
         if (!isInt)
         {
@@ -48,7 +55,7 @@ class Program
         string numPastry = Console.ReadLine();
 
         // Validate user input and convert input to integer
-        int intNumPastry;
+        // int intNumPastry;
         bool isInt = int.TryParse(numPastry, out intNumPastry);
         if (!isInt)
         {
@@ -62,15 +69,27 @@ class Program
     private static void Main()
     {
         ShowWelcome();
-        Console.WriteLine("What would you like to do?");
-        Console.WriteLine("1: Place an order");
-        Console.Write("\nEnter Option (1-): ");
+        Console.Write("\nWould you like to place an order? (Y/N): ");
         userResponse = Console.ReadLine();
         
-        if (userResponse == "1")
+        if (userResponse == "Y" || userResponse == "y")
         {
             TakeBreadOrder();
             TakePastryOrder();
+            
+            breadOrder.Quantity = intNumBread;
+            pastryOrder.Quantity = intNumPastry;
+
+            breadOrder.GetCost();
+            pastryOrder.GetCost();
+
+            int totalCost = breadOrder.Cost + pastryOrder.Cost;
+
+            Console.WriteLine($"\nYour total is ${totalCost}.");
+        }
+        else
+        {
+            Console.WriteLine("\nThank you for visiting!");
         }
     }
 }
