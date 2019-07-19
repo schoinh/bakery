@@ -108,7 +108,7 @@ class Program
                 AddMorePastry();
                 break;
             case "3":
-                Console.WriteLine("Thank you for visiting!");
+                Console.WriteLine("\nGreat! Thank you for visiting!");
                 Environment.Exit(0);
                 break;
             default:
@@ -154,7 +154,7 @@ class Program
         }
         else
         {
-            Console.WriteLine("\nGreat! Thank you for visiting!");
+            Console.WriteLine("\nThank you for visiting!");
         }
     }
 }
