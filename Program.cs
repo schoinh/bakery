@@ -1,5 +1,5 @@
-using System;
 using Bakery.Models;
+using System;
 
 class Program
 {
@@ -7,7 +7,6 @@ class Program
     private static Pastry pastryOrder = new Pastry ();
     private static int intNumBread;
     private static int intNumPastry;
-    private static bool goodInput;
 
     private static string userResponse = "";
 
@@ -31,62 +30,38 @@ class Program
         Console.WriteLine("---------------------\n");
     }
 
-    private static void ValidateConvertInput(ref int outputNum)
+    private static bool ValidateConvertInput(ref int outputNum)
     {
         userResponse = Console.ReadLine();
-        // Console.WriteLine("User Response: " + userResponse);
         bool isInt = int.TryParse(userResponse, out outputNum);
-        // Console.WriteLine("outputNum: " + outputNum);
 
         if (isInt)
         {
-            goodInput = true; 
+            return true; 
         }
         else
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Please enter a valid number.");
             Console.ResetColor();
-            goodInput = false;
+            return false;
         }
     }
 
     private static void TakeBreadOrder()
     {
         Console.Write("\nHow many loaves of bread would you like?: "); 
-        ValidateConvertInput(ref intNumBread);
-        Console.WriteLine("intNumBread: " + intNumBread);
-
-        if (goodInput == false)
+        if (ValidateConvertInput(ref intNumBread) == false)
         {
             TakeBreadOrder();
         }
-
-        // string numBread = Console.ReadLine();
-
-        // // Validate user input and convert input to integer
-        // bool isInt = int.TryParse(numBread, out intNumBread);
-        // if (!isInt)
-        // {
-        //     Console.ForegroundColor = ConsoleColor.Red;
-        //     Console.WriteLine("Please enter a valid number.");
-        //     Console.ResetColor();
-        //     TakeBreadOrder();
-        // }
     }
 
     private static void TakePastryOrder()
     {
         Console.Write("\nHow many pastries would you like?: ");
-        string numPastry = Console.ReadLine();
-
-        // Validate user input and convert input to integer
-        bool isInt = int.TryParse(numPastry, out intNumPastry);
-        if (!isInt)
+        if (ValidateConvertInput(ref intNumPastry) == false)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Please enter a valid number.");
-            Console.ResetColor();
             TakePastryOrder();
         }
     }
@@ -148,36 +123,20 @@ class Program
     private static void AddMoreBread()
     {
         Console.Write("\nHow many more loaves of bread?: ");
-        string numBread = Console.ReadLine();
-
-        // Validate user input and convert input to integer
-        bool isInt = int.TryParse(numBread, out intNumBread);
-        if (!isInt)
+        if (ValidateConvertInput(ref intNumBread) == false)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Please enter a valid number.");
-            Console.ResetColor();
             AddMoreBread();
         }
-
         ProcessOrder();
     }
 
     private static void AddMorePastry()
     {
         Console.Write("\nHow many more pastries?: ");
-        string numPastry = Console.ReadLine();
-
-        // Validate user input and convert input to integer
-        bool isInt = int.TryParse(numPastry, out intNumPastry);
-        if (!isInt)
+        if (ValidateConvertInput(ref intNumPastry) == false)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Please enter a valid number.");
-            Console.ResetColor();
             AddMorePastry();
         }
-
         ProcessOrder();
     }
     
