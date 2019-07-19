@@ -6,12 +6,15 @@
 
 ## Description
 
-In this application, the user can specify the number of loaves of bread and the number of pastries to order, then see the total cost for the order. A discount applies when a 3-pack of bread or 3-pack of pastries is selected. After placing the initial order, the user can add more items to the order if they wish, as many times as they want, and see the updated cost with each addition.
+In this application, the user can specify the number of loaves of bread and the number of pastries to order, then see the total cost for the order. Discounts apply for 3-packs of bread and 3-packs of pastries. After placing the initial order, the user can add more items to the order if they wish, as many times as they want, and see the updated cost with each addition.
 
 ### Specs
 | Spec | Input | Output |
 | :-------------     | :------------- | :------------- |
-| **BEHAVIOR** | INPUT | OUTPUT |
+| **Charges $5 for 1 loaf of bread and $2 for 1 pastry** | 1 loaf of bread, 1 pastry | $5 + $2 = $10 total |
+| **Charges $10 for 3 loaves of bread and $5 for 3 pastries** | 6 loaves of bread, 4 pastries | $20 + $7 = $27 total |
+| **Allows adding additional loaves of bread or pastries to existing order** | Add 2 more pastries to above order | $20 + $10 = $30 total |
+
 
 ## Setup/Installation Requirements
 
