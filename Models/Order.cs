@@ -14,6 +14,7 @@ namespace Bakery.Models
 
     class Bread : BakedGood
     {
+        // $5 for 1 loaf, $10 for 3 loaves
         public void GetCost()
         { 
             int numThrees = Quantity / 3;
@@ -25,6 +26,7 @@ namespace Bakery.Models
 
     class Pastry : BakedGood
     {
+        // $2 for 1 pastry, $5 for 3 pastries
         public void GetCost()
         { 
             int numThrees = Quantity / 3;

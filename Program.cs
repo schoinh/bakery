@@ -30,6 +30,7 @@ class Program
         Console.WriteLine("---------------------\n");
     }
 
+    // Convert user input to integer if possible; if not convertable, prompts user for new input
     private static bool ValidateConvertInput(ref int outputNum)
     {
         userResponse = Console.ReadLine();
@@ -66,14 +67,16 @@ class Program
         }
     }
 
+    // Add integer user input to the Bread or Pastry instance
     private static void ProcessOrder()
     {
         breadOrder.Quantity += intNumBread;
         pastryOrder.Quantity += intNumPastry;
 
-        intNumBread = 0;
+        intNumBread = 0;    // Reset input to 0
         intNumPastry = 0;
 
+        // Calculate totals for breads and pastries separately
         breadOrder.GetCost();
         pastryOrder.GetCost();
 
